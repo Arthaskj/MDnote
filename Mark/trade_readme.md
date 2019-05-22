@@ -1,3 +1,5 @@
+
+
 ![logo](assets/logo.png)
 
 
@@ -51,6 +53,8 @@ A[交易一体化Web项目] -->B{Node请求转发}
   node app.js
   ```
 
+  
+
 - 项目配置
 
   你可以在`/app.js `文件中对网站部署的端口，以及需要路由转发的站点进行配置
@@ -98,6 +102,51 @@ A[交易一体化Web项目] -->B{Node请求转发}
   > 不添加`taskname`则执行default任务，耗时较长，发布版本时使用。具体打包逻辑可以在`/WebSource/Common/gulpfile.js`中查看
   >
   > 所有打包压缩后的文件放在`/WebSource/Common/release`文件夹下
+
+  
+
+- 服务器端配置
+
+  客户端启动Node.js应用：
+
+  ```shell
+  node app.js  # 方法一
+  npm start    # 方法二 Express框架
+  ```
+
+  这样可以正常启动应用，但是如果断开客户端连接，应用也就随之停止了。也就是说这样的启动方式没有给应用一个守护线程。
+
+  Forever可以解决这个问题！Forever可以守护Node.js应用，客户端断开的情况下，应用也能正常工作。
+
+  安装过Node.js后再安装forever，需要加-g参数，因为forever要求安装到全局环境下：
+
+  ```shell
+  npm install forever -g
+  ```
+
+  forever使用：
+
+  ```shell
+  # 启动
+  forever start ./bin/www  ＃最简单的启动方式
+  forever start -l forever.log ./bin/www  #指定forever日志输出文件，默认路径~/.forever
+  forever start -l forever.log -a ./bin/www  #需要注意，如果第一次启动带日志输出文件，以后启动都需要加上 -a 参数，forever默认不覆盖原文件
+  forever start -o out.log -e err.log ./bin/www  ＃指定node.js应用的控制台输出文件和错误信息输出文件
+  forever start -w ./bin/www  #监听当前目录下文件改动，如有改动，立刻重启应用，不推荐的做法！如有日志文件，日志文件是频繁更改的
+  
+  # 重启
+  forever restart ./bin/www  ＃重启单个应用
+  forever restart [pid]  #根据pid重启单个应用
+  forever restartall  #重启所有应用
+  
+  # 停止（和重启很类似）
+  forever stop ./bin/www  ＃停止单个应用
+  forever stop [pid]  #根据pid停止单个应用
+  forever stopall  ＃停止所有应用
+  
+  # 查看forever守护的应用列表
+  forever list
+  ```
 
 
 

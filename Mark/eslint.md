@@ -179,7 +179,7 @@
 自制
 
 ```
- 'no-compare-neg-zero':2,//禁止与 -0 进行比较
+'no-compare-neg-zero':2,//禁止与 -0 进行比较
         'no-cond-assign':2,//禁止条件表达式中出现赋值操作符
         // 'no-console':1,//禁用 console
         'no-constant-condition':2,    //禁止在条件中使用常量表达式
@@ -242,6 +242,9 @@
         "array-bracket-spacing": [2, "never"],//是否允许非空数组里面有多余的空格
         "key-spacing": [0, { "beforeColon": false, "afterColon": true }],//对象字面量中冒号的前后空格
         "object-curly-spacing": [0, "never"],//大括号内是否允许不必要的空格
-                // "space-return-throw-case": 2,//return throw case后面要不要加空格
+        "no-multiple-empty-lines": [1, {"max": 2}],//空行最多不能超过2行
+        "generator-star-spacing": 0,//生成器函数*的前后空格
+        "space-before-function-paren": [0, "always"],//函数定义时括号前面要不要有空格
+        "space-unary-ops": [0, { "words": true, "nonwords": false }],//一元运算符的前/后要不要加空格
 ```
 
