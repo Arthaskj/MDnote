@@ -87,8 +87,7 @@ module.exports = {
     'no-delete-var': 2,    //禁止删除变量
     // 'no-undef':2,    //禁用未声明的变量，除非它们在 /*global */ 注释中被提到
     // 'no-unused-vars':2,    //禁止出现未使用过的变量
-
-    "no-irregular-whitespace": 2,//不能有不规则的空格
+    "space-infix-ops": 2, // 操作符前后需要加空格
     "no-multi-spaces": 1,//不能用多余的空格
     "no-spaced-func": 2,//函数调用时 函数名与()之间不能有空格
     "no-trailing-spaces": 1,//一行结束后面不要有空格
@@ -97,7 +96,6 @@ module.exports = {
     "object-curly-spacing": [0, "never"],//大括号内是否允许不必要的空格
     "no-multiple-empty-lines": [1, { "max": 2 }],//空行最多不能超过2行
     "generator-star-spacing": 0,//生成器函数*的前后空格
-    "space-before-function-paren": [0, "always"],//函数定义时括号前面要不要有空格
     "space-unary-ops": [0, { "words": true, "nonwords": false }],//一元运算符的前/后要不要加空格
 
     "no-eq-null": 2,//禁止对null使用==或!=运算符
@@ -105,8 +103,38 @@ module.exports = {
     "quote-props": [2, "as-needed", { "keywords": false }],//对象字面量中的属性名是否强制双引号
 
 
+    // 注释前需要空行，注释后不需要空行
+    "lines-around-comment": ["error", {
+      "beforeBlockComment": true,
+      "afterBlockComment": false,
+      "beforeLineComment": true,
+      "afterLineComment": false,
+      "allowBlockStart": true
+    }],
+    // 注释需要要空一格 eg: // 我是注释
+    "spaced-comment": ["error", "always", {
+      "line": {
+        "markers": ["/"],
+        "exceptions": ["-", "+"]
+      },
+      "block": {
+        "markers": ["!"],
+        "exceptions": ["*"],
+        "balanced": true
+      }
+    }],
+    'comma-spacing': 'error', // ',' 号前面不允许有空格
+    "default-case": 'error', // switch语句中必须有default条件
+    "dot-notation": ["error", { "allowKeywords": false }], // 不允许关键字出现在变量中
+    "eqeqeq": "error", // 消除不安全类型的全等操作
+
+    "space-before-function-paren": ["error", "never"], // 不允许函数括号之间存在空格
+    "max-params": ["error", 4], // 限制函数的最大参数个数
+    "no-console": "warn",
+    "no-alert": "error"
   }
 };
+
 ```
 
 
