@@ -82,6 +82,7 @@ module.exports = {
 
     //Stylistic Issues
     'no-mixed-spaces-and-tabs': 2,    //禁止空格和 tab 的混合缩进
+    'indent': ["error", 2],
 
     //Variables
     'no-delete-var': 2,    //禁止删除变量
@@ -107,7 +108,7 @@ module.exports = {
     "lines-around-comment": ["error", {
       "beforeBlockComment": true,
       "afterBlockComment": false,
-      "beforeLineComment": true,
+      "beforeLineComment": false,
       "afterLineComment": false,
       "allowBlockStart": true
     }],
